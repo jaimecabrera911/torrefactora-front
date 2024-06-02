@@ -11,13 +11,11 @@ export async function getAll(): Promise<TaskModel[]> {
     };
 
     const response = await axios.request(config);
-    console.log(response)
     return response.data
 }
 
 export async function findByStatus(status: string): Promise<TaskModel[]> {
     const tasks = await getAll();
-    console.log(tasks)
     return tasks.filter(t => t.status == status)
 }
 

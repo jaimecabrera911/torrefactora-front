@@ -3,9 +3,9 @@ import TaskForm from './TaskForm';
 
 const TodoList = () => {
     return (
-        <div className='prose p-10'>
-            <h1>TodoList</h1>
-            <button className="btn" onClick={() => {
+        <div className='p-8'>
+            <h1 className="mb-4 text-center text-6xl font-bold  ">TodoList</h1>
+            <button className="btn btn-primary" onClick={() => {
                 const modal = document.getElementById('my_modal_1');
                 if (modal instanceof HTMLDialogElement) {
                     modal.showModal();
@@ -16,7 +16,7 @@ const TodoList = () => {
                     <TaskForm />
                 </div>
             </dialog>
-            <div className="flex justify-between w-svw p-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                 <TaskList title="Iniciadas" status='iniciada' />
                 <TaskList title="En Proceso" status='en proceso' />
                 <TaskList title="Finalizadas" status='finalizada' />
