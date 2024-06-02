@@ -1,0 +1,45 @@
+import React from "react";
+import { UpdateTaskForm } from "./UpdateTaskForm.tsx";
+
+interface Props {
+    id: string,
+    title: string,
+    description: string
+    priority: "baja" | "normal" | "urgente"
+}
+
+const TaskCard: React.FC<Props> = ({ title, id, description, priority }) => {
+
+    const colorbadge = {
+        baja: "badge-info",
+        normal: "badge-warning",
+        urgente: "badge-error"
+    }
+    return (
+        <div className="card w-96 bg-base-100 shadow-xl mb-2">
+            <div className="card-body">
+                <h2 className="card-title">{title}</h2>
+                <p>{description}</p>
+                <div className={`badge ${colorbadge[priority]} gap-2`}>
+                    <span className="badge-text">{priority}</span>
+                </div>
+                <div className="card-actions justify-end">
+                    <button className="btn" onClick={() => {
+                        const modal = document.getElementById('my_modal_2');
+                        if (modal instanceof HTMLDialogElement) {
+                            modal.showModal();
+                        }
+                    }}>Actualizar Tarea
+                    </button>
+                    <dialog id="my_modal_2" className="modal">
+                        <div className="modal-box">
+                            <UpdateTaskForm id={id} />
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default TaskCard;
