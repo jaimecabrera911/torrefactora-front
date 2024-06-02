@@ -25,8 +25,10 @@ const TaskList: React.FC<Props> = ({ title, status }) => {
     }, [status]);
 
     return (
-        <div className="h-lvh flex flex-col">
-            <h1 className="text-center my-4">{title}</h1>
+        <div className="flex flex-col border-solid border-2 border-sky-500 rounded-lg" style={{ height: "36rem" }}>
+            <div className="prose">
+                <h1 className="text-center my-4">{title}</h1>
+            </div>
             <div className="flex-1 overflow-y-scroll px-4">
                 {tasks.map(task => (
                     task.id && task.name && task.description && task.priority ? (
